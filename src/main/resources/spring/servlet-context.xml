@@ -17,21 +17,29 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+
 	<context:component-scan base-package="com.my.app" />
-	
+
+	<mvc:annotation-driven>
+	    <mvc:argument-resolvers>
+	        <bean id="renamingProcessor" class="com.my.app.common.annotation.RenamingProcessor">
+	            <constructor-arg name="annotationNotRequired" value="true" />
+	        </bean>
+	    </mvc:argument-resolvers>
+	</mvc:annotation-driven>
+
 	<websocket:handlers>
 		<websocket:mapping handler="webSocketHandler" path="/websocket" />
 		<websocket:sockjs />
 	</websocket:handlers>
-	
+
 	<websocket:message-broker application-destination-prefix="/app">
 		<websocket:stomp-endpoint path="/stomp">
 			<websocket:sockjs />
 		</websocket:stomp-endpoint>
 		<websocket:simple-broker prefix="/topic" />
 	</websocket:message-broker>
-	
+
 	<bean id="webSocketHandler" class="com.my.app.web.handler.WebSocketHandler" />
 
 	<!-- HttpClient -->
@@ -45,7 +53,7 @@
 			<bean id="hostnameVerifier" class="org.apache.http.conn.ssl.NoopHostnameVerifier" />
 		</property>
 	</bean>
-	
+
 	<!-- RestTemplate -->
 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
 		<constructor-arg index="0">
@@ -58,5 +66,5 @@
 			</bean>
 		</constructor-arg>
 	</bean>
-	
+
 </beans>
