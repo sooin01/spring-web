@@ -1,6 +1,5 @@
 package com.my.app.sample.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -19,12 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.my.app.common.util.ConsoleUtil;
 import com.my.app.sample.dto.RequestBodySampleDto;
 import com.my.app.sample.dto.RequestParamSampleDto;
 import com.my.app.sample.service.SampleService;
 import com.my.app.sample.validator.SampleValidator;
-import com.my.app.sample.vo.UserVo;
+import com.my.app.sample.vo.SampleVo;
 
 @Controller
 public class SampleController {
@@ -43,19 +41,19 @@ public class SampleController {
 	}
 	
 	@RequestMapping(value = "/sample", method = RequestMethod.GET)
-	public @ResponseBody List<UserVo> list(RequestParamSampleDto requestParamSample) {
+	public @ResponseBody List<SampleVo> list(RequestParamSampleDto requestParamSample) {
 		logger.info("Request param: {}", requestParamSample);
 		return sampleService.list();
 	}
 	
 	@RequestMapping(value = "/sample/{user}", method = RequestMethod.GET)
-	public @ResponseBody UserVo get(@PathVariable String user) {
+	public @ResponseBody SampleVo get(@PathVariable String user) {
 		return sampleService.get(user);
 	}
 	
 	@RequestMapping(value = "/sample", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public @ResponseBody UserVo create(@RequestBody @Valid RequestBodySampleDto requestSample, BindingResult result) {
+	public @ResponseBody SampleVo create(@RequestBody @Valid RequestBodySampleDto requestSample, BindingResult result) {
 		sampleValidator.validate(requestSample, result);
 		for (FieldError fieldError : result.getFieldErrors()) {
 			logger.error("{}", fieldError);
@@ -63,13 +61,6 @@ public class SampleController {
 		
 		logger.info("** request body: {}", requestSample);
 		return sampleService.get(requestSample.getUser().getUser());
-	}
-	
-	@RequestMapping(value = "/sample/console", method = RequestMethod.GET)
-	@ResponseStatus(value = HttpStatus.ACCEPTED)
-	public @ResponseBody String console() throws IOException {
-		ConsoleUtil.consoleExec();
-		return null;
 	}
 	
 }

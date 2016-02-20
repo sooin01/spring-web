@@ -5,7 +5,7 @@
 
 <mapper namespace="SampleDao">
 
-	<select id="get" parameterType="map" resultType="userVo">
+	<select id="get" parameterType="map" resultType="sampleVo">
 		SELECT	Host,
 				User
 		FROM	user

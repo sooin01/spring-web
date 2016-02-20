@@ -2,7 +2,7 @@ package com.my.app.sample.vo;
 
 import com.my.app.common.dto.BaseDto;
 
-public class UserVo extends BaseDto {
+public class SampleVo extends BaseDto {
 
 	private static final long serialVersionUID = 163176574803744761L;
 
