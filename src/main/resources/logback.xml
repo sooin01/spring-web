@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="1 second">
+
+	<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread][%-5level] %logger.%M:%L - %msg%n</Pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="com.my.app" level="debug" />
+	
+	<logger name="org.springframework" level="info" />
+	
+	<logger name="org.mybatis" level="info" />
+	
+	<logger name="org.apache.http" level="debug" />
+
+	<root>
+		<level value="info" />
+		<appender-ref ref="consoleAppender" />
+	</root>
+	
+</configuration>
