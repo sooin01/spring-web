@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="${table}">
+
+	<select id="get" parameterType="map" resultType="hashmap">
+		SELECT	${columns}
+		  FROM	${table}
+		 WHERE	1 = 1
+		   AND	ENABLED_STATE != 75635
+		${conditions}
+		<if test="USER_CONDITION != null and USER_CONDITION.length() > 0">
+			${USER_CONDITION}
+		</if>
+		<if test="ROWLIMIT != null and ROWLIMIT.length() > 0">
+			limit 0, ${ROWLIMIT}
+		</if>
+	</select>
+	
+	<insert id="insert" parameterType="map">
+		INSERT INTO ${table} (
+			${columns}
+		) VALUES (
+			${values}
+		)
+	</insert>
+	
+	<update id="update" parameterType="map">
+		UPDATE	${table}
+		   SET	${columns}
+		 WHERE	1 = 1
+		${conditions}
+	</update>
+	
+	<delete id="delete" parameterType="map">
+		DELETE FROM ${table}
+		 WHERE	1 = 1
+		${conditions}
+	</delete>
+
+</mapper>
