@@ -23,13 +23,13 @@
 		INSERT INTO ${table} (
 			${columns}
 		) VALUES (
-			${values}
+			${insertValues}
 		)
 	</insert>
 	
 	<update id="update" parameterType="map">
 		UPDATE	${table}
-		   SET	${columns}
+		   SET	${updateValues}
 		 WHERE	1 = 1
 		${conditions}
 	</update>

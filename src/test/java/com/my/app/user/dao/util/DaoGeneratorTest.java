@@ -46,7 +46,8 @@ public class DaoGeneratorTest {
 			
 			List<String> columnList = new ArrayList<>();
 			List<String> conditionList = new ArrayList<>();
-			List<String> valueList = new ArrayList<>();
+			List<String> insertValueList = new ArrayList<>();
+			List<String> updateValueList = new ArrayList<>();
 			
 			// 컬럼
 			ResultSet rsCol = databaseMetaData.getColumns(connection.getCatalog(), null, tableName, null);
@@ -56,7 +57,8 @@ public class DaoGeneratorTest {
 				JDBCType jdbcType = JDBCType.valueOf(dataType);
 				
 				String condition = "";
-				String value = "";
+				String insertValue = "";
+				String updateValue = "";
 				if (conditionList.size() > 0) {
 					condition += "\t\t";
 				}
@@ -66,13 +68,15 @@ public class DaoGeneratorTest {
 							+ "\n\t\t\tAND %s = ${%s}"
 							+ "\n\t\t</if>",
 							columnName, columnName, columnName, columnName);
-					value += String.format("${%s}", columnName);
+					insertValue += String.format("${%s}", columnName);
+					updateValue += String.format("%s = ${%s}", columnName, columnName);
 				} else {
 					condition += String.format("<if test=\"%s != null and %s.length() > 0\">"
 							+ "\n\t\t\tAND %s = #{%s}"
 							+ "\n\t\t</if>",
 							columnName, columnName, columnName, columnName);
-					value += String.format("#{%s}", columnName);
+					insertValue += String.format("#{%s}", columnName);
+					updateValue += String.format("%s = #{%s}", columnName, columnName);
 				}
 				
 				if (jdbcType == JDBCType.BIT) {
@@ -83,10 +87,16 @@ public class DaoGeneratorTest {
 				
 				if (columnList.size() > 0 && columnList.size() % 5 == 0) {
 					columnList.add("\n\t\t\t" + columnName);
-					valueList.add("\n\t\t\t" + value);
+					insertValueList.add("\n\t\t\t" + insertValue);
+					updateValueList.add("\n\t\t\t" + updateValue);
 				} else {
 					columnList.add(columnName);
-					valueList.add(value);
+					insertValueList.add(insertValue);
+					if (updateValueList.size() > 0) {
+						updateValueList.add("\n\t\t\t" + updateValue);
+					} else {
+						updateValueList.add(updateValue);
+					}
 				}
 				
 				conditionList.add(condition);
@@ -95,10 +105,12 @@ public class DaoGeneratorTest {
 			
 			String columes = columnList.stream().collect(Collectors.joining(", "));
 			String conditions = conditionList.stream().collect(Collectors.joining("\n"));
-			String values = valueList.stream().collect(Collectors.joining(", "));
+			String insertValues = insertValueList.stream().collect(Collectors.joining(", "));
+			String updateValues = updateValueList.stream().collect(Collectors.joining(", "));
 			valuesMap.put("columns", columes);
 			valuesMap.put("conditions", conditions);
-			valuesMap.put("values", values);
+			valuesMap.put("insertValues", insertValues);
+			valuesMap.put("updateValues", updateValues);
 			
 			// xml 템플릿 merge
 			StrSubstitutor sub = new StrSubstitutor(valuesMap);
