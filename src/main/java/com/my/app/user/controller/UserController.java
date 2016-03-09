@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.my.app.user.dto.UserResponseDto;
-import com.my.app.user.servvice.UserService;
+import com.my.app.user.service.UserService;
 
 @RestController
 public class UserController {
