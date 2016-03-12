@@ -12,13 +12,23 @@
 		  from contact a
 	</select>
 	
-	<select id="getContact" parameterType="string" resultType="Contact">
+	<select id="getContactById" parameterType="int" resultType="Contact">
 		select a.ID,
 		       a.FIRST_NAME,
 		       a.LAST_NAME,
 		       a.BIRTH_DATE
 		  from contact a
 		 where a.ID = #{id} 
+	</select>
+	
+	<select id="getContact" parameterType="Contact" resultType="Contact">
+		select a.ID,
+		       a.FIRST_NAME,
+		       a.LAST_NAME,
+		       a.BIRTH_DATE
+		  from contact a
+		 where a.ID = #{id}
+		   and a.FIRST_NAME = #{firstName}
 	</select>
 
 </mapper>

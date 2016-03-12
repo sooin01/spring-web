@@ -18,8 +18,12 @@ public class ContactService {
 		return contactDao.getContactList();
 	}
 	
-	public Contact getContact() {
-		return contactDao.getContact();
+	public Contact getContactById(Integer id) {
+		return contactDao.getContactById(id);
+	}
+	
+	public Contact getContact(Contact contact) {
+		return contactDao.getContact(contact);
 	}
 	
 }

@@ -21,8 +21,4 @@
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
 	</settings>
 	
-	<!-- <plugins>
-		<plugin interceptor="com.my.app.common.dao.CommonDaoInterceptor" />
-	</plugins> -->
-
 </configuration>
