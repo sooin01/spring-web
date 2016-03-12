@@ -10,7 +10,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.my.app.contact.domain.Contact;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"/spring/*-context.xml"})
+@ContextConfiguration(locations={"/spring/jdbc-context.xml"})
 @WebAppConfiguration
 public class ContactServiceTest {
 	
