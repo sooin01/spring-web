@@ -1,8 +1,8 @@
 package com.my.app.common.mapper;
 
-import com.my.app.common.domain.BaseDomain;
+import com.my.app.common.domain.Common;
 
-public class MyBatisColumn extends BaseDomain {
+public class MyBatisColumn extends Common {
 
 	private static final long serialVersionUID = -1772427288835169920L;
 	
