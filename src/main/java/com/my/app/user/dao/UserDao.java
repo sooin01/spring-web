@@ -1,27 +1,12 @@
 package com.my.app.user.dao;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.my.app.user.domain.QTUser;
 import com.my.app.user.domain.TUser;
-import com.mysema.query.jpa.impl.JPAQuery;
 
 @Repository
-public class UserDao {
+public interface UserDao extends CrudRepository<TUser, String>, QueryDslPredicateExecutor<TUser> {
 
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	private JPAQuery query = new JPAQuery(entityManager);
-	
-	public List<TUser> getUserList() {
-		QTUser tuser = QTUser.tUser;
-		return query.from(tuser).list(tuser);
-	}
-	
 }

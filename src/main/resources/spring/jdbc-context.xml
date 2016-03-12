@@ -24,7 +24,6 @@
 		<property name="packagesToScan">
 			<array>
 				<value>com.my.app.user.domain</value>
-				<value>com.my.app.test.domain</value>
 			</array>
 		</property>
 		<property name="dataSource" ref="dataSource" />
@@ -38,6 +37,7 @@
         	<props>
         		<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
         		<prop key="hibernate.show_sql">true</prop>
+                <prop key="hbm2ddl.auto">validate</prop>
         	</props>
         </property>
     </bean>

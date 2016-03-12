@@ -24,11 +24,8 @@ public class TUser implements Serializable {
 	@Column(name = "USER_NAME")
 	private String USER_NAME;
 	
-	@Column(name = "USER_TYPE")
-	private Integer userType;
-	
-	@Column(name = "IS_ADMIN_YN")
-	private Boolean isAdminYn;
+	@Column(name = "ADMIN_YN")
+	private Boolean adminYn;
 	
 	@Column(name = "AGE")
 	private Integer age;
@@ -55,20 +52,12 @@ public class TUser implements Serializable {
 		USER_NAME = uSER_NAME;
 	}
 
-	public Integer getUserType() {
-		return userType;
+	public Boolean getAdminYn() {
+		return adminYn;
 	}
 
-	public void setUserType(Integer userType) {
-		this.userType = userType;
-	}
-
-	public Boolean getIsAdminYn() {
-		return isAdminYn;
-	}
-
-	public void setIsAdminYn(Boolean isAdminYn) {
-		this.isAdminYn = isAdminYn;
+	public void setAdminYn(Boolean adminYn) {
+		this.adminYn = adminYn;
 	}
 
 	public Integer getAge() {

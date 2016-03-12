@@ -1,4 +1,4 @@
-package com.my.app.user.dao.util;
+package com.my.app.common.dao.util;
 
 import java.io.File;
 import java.io.FileInputStream;
