@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my.app.contact.dao.ContactDao">
+
+	<select id="getContactList" resultType="Contact">
+		select a.ID,
+		       a.FIRST_NAME,
+		       a.LAST_NAME,
+		       a.BIRTH_DATE
+		  from contact a
+	</select>
+	
+	<select id="getContact" parameterType="string" resultType="Contact">
+		select a.ID,
+		       a.FIRST_NAME,
+		       a.LAST_NAME,
+		       a.BIRTH_DATE
+		  from contact a
+		 where a.ID = #{id} 
+	</select>
+
+</mapper>

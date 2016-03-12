@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class BaseDomain implements Serializable {
+public class Common implements Serializable {
 
 	private static final long serialVersionUID = -2858165339117735946L;
 	

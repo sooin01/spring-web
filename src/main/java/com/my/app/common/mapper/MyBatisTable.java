@@ -3,9 +3,9 @@ package com.my.app.common.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.my.app.common.domain.BaseDomain;
+import com.my.app.common.domain.Common;
 
-public class MyBatisTable extends BaseDomain {
+public class MyBatisTable extends Common {
 
 	private static final long serialVersionUID = 8147125071484178591L;
 	
