@@ -8,6 +8,8 @@ public interface ContactDao {
 
 	public List<Contact> getContactList();
 	
-	public Contact getContact();
+	public Contact getContactById(Integer id);
+	
+	public Contact getContact(Contact contact);
 	
 }

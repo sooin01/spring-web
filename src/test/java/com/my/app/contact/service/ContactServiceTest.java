@@ -24,4 +24,15 @@ public class ContactServiceTest {
 		}
 	}
 	
+	@Test
+	public void testGetContact() {
+		//Contact contact = contactService.getContactById(1);
+		//System.out.println(contact);
+		
+		Contact contact = new Contact();
+		contact.setId(1);
+		contact.setFirstName("Clarence");
+		System.out.println(contactService.getContact(contact));
+	}
+	
 }
