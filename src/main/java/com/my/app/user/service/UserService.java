@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my.app.user.dao.UserDao;
-import com.my.app.user.domain.User;
+import com.my.app.user.domain.TUser;
 import com.my.app.user.dto.UserResponseDto;
 
 @Service
@@ -19,9 +19,9 @@ public class UserService  {
 
 	public List<UserResponseDto> getUserList() {
 		List<UserResponseDto> list = new ArrayList<>();
-		for (User user : userDao.getUserList()) {
+		for (TUser tUser : userDao.getUserList()) {
 			UserResponseDto dto = new UserResponseDto();
-			BeanUtils.copyProperties(user, dto);
+			BeanUtils.copyProperties(tUser, dto);
 			list.add(dto);
 		}
 		return list;
