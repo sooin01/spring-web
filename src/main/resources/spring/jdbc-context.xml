@@ -58,25 +58,11 @@
 		<property name="typeAliasesPackage" value="com.my.app" />
 		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
 		<!-- <property name="mapperLocations" value="classpath*:mybatis/mapper/**/*.xml" /> -->
-<<<<<<< HEAD
-<<<<<<< HEAD
 		<!-- <property name="plugins">
 			<array>
 				<bean id="commonDaoInterceptor" class="com.my.app.common.dao.CommonDaoInterceptor" />
 			</array>
 		</property> -->
-=======
-=======
->>>>>>> branch 'master' of https://github.com/sooin01/spring-web.git
-		<property name="plugins">
-			<array>
-				<bean id="commonDaoInterceptor" class="com.my.app.common.dao.CommonDaoInterceptor" />
-			</array>
-		</property>
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> branch 'master' of https://github.com/sooin01/spring-web.git
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
