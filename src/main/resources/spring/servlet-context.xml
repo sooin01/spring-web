@@ -87,5 +87,5 @@
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
 		<property name="cookieName" value="locale" />
 	</bean>
-
+	
 </beans>
