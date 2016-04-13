@@ -1,5 +1,9 @@
 package com.my.app.common.exception;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,9 +13,13 @@ public class GlobalException {
 
 	@ExceptionHandler(value = Exception.class)
 	@ResponseBody
-	public String exception(Exception e) {
+	public ResponseEntity<String> exception(Exception e) {
 		System.out.println("에러!! " + e.toString());
-		return "{\"result\":\"Error\"}";
+		String body = "{\"result\":\"Error\"}";
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		return new ResponseEntity<>(body, headers, HttpStatus.SERVICE_UNAVAILABLE);
 	}
 	
 }
