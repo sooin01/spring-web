@@ -13,13 +13,14 @@ import java.util.concurrent.Executors;
 
 public class ServerSocket1 {
 	
-	private ExecutorService executorService = Executors.newFixedThreadPool(1);
+	private ExecutorService executorService = Executors.newFixedThreadPool(10);
 	
 	private ServerSocket serverSocket;
 	
 	public ServerSocket1() throws IOException {
 		InetAddress bindAddr = InetAddress.getByName("localhost");
 		System.out.println(bindAddr.getHostName() + " => " + bindAddr.getHostAddress());
+		// 포트는 8080, 접속 대기는 100
 		this.serverSocket = new ServerSocket(8080, 100, bindAddr);
 	}
 	
@@ -28,8 +29,8 @@ public class ServerSocket1 {
 			while (true) {
 				System.out.println("waiting..");
 				Socket socket = serverSocket.accept();
-				SocketProcess socketProcess = new SocketProcess(socket);
-				executorService.execute(socketProcess);
+				SocketProcess1 socketProcess1 = new SocketProcess1(socket);
+				executorService.execute(socketProcess1);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -65,13 +66,13 @@ public class ServerSocket1 {
 	
 }
 
-class SocketProcess extends Thread {
+class SocketProcess1 extends Thread {
 	
 	private Socket socket;
 	private BufferedReader br;
 	private PrintWriter pw;
 
-	public SocketProcess(Socket socket) throws IOException {
+	public SocketProcess1(Socket socket) throws IOException {
 		this.socket = socket;
 		br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 		pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
