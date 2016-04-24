@@ -14,12 +14,10 @@ public class GlobalException {
 	@ExceptionHandler(value = Exception.class)
 	@ResponseBody
 	public ResponseEntity<String> exception(Exception e) {
-		System.out.println("에러!! " + e.toString());
 		String body = "{\"result\":\"Error\"}";
-		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		return new ResponseEntity<>(body, headers, HttpStatus.SERVICE_UNAVAILABLE);
+		return new ResponseEntity<>(body, headers, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 }
