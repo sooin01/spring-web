@@ -7,11 +7,11 @@
 		</encoder>
 	</appender>
 	
-	<logger name="com.my.app" level="debug" />
+	<logger name="com.my.app" level="trace" />
 	
-	<logger name="org.springframework" level="info" />
+	<logger name="org.springframework" level="warn" />
 	
-	<logger name="org.mybatis" level="info" />
+	<logger name="org.mybatis" level="warn" />
 	
 	<logger name="org.apache.http" level="debug" />
 	
