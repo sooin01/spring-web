@@ -12,4 +12,9 @@ public class AngularController {
 		return "/angular/index";
 	}
 	
+	@RequestMapping(value = "/angular/test1", method = RequestMethod.GET)
+	public String test1() {
+		return "/angular/test1";
+	}
+	
 }
