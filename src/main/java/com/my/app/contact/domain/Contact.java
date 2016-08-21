@@ -1,23 +1,21 @@
 package com.my.app.contact.domain;
 
-import java.sql.Date;
-
 import com.my.app.common.domain.Common;
 
 public class Contact extends Common {
 
 	private static final long serialVersionUID = -1858367044021476913L;
 
-	private Integer id;
+	private String id;
 	private String firstName;
 	private String lastName;
-	private Date birthDate;
+	private String birthDate;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -37,11 +35,11 @@ public class Contact extends Common {
 		this.lastName = lastName;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

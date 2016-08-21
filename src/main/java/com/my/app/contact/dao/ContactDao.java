@@ -12,4 +12,8 @@ public interface ContactDao {
 	
 	public Contact getContact(Contact contact);
 	
+	public int insertContact(Contact contact);
+	
+	public int deleteContact(Contact contact);
+	
 }

@@ -30,7 +30,7 @@ public class ContactServiceTest {
 		//System.out.println(contact);
 		
 		Contact contact = new Contact();
-		contact.setId(1);
+		contact.setId("1");
 		contact.setFirstName("Clarence");
 		System.out.println(contactService.getContact(contact));
 	}

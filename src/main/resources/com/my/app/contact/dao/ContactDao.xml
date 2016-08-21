@@ -30,5 +30,16 @@
 		 where a.ID = #{id}
 		   and a.FIRST_NAME = #{firstName}
 	</select>
+	
+	<insert id="insertContact" parameterType="Contact">
+		insert into contact
+		values (
+			#{id}, #{firstName}, #{lastName}, #{birthDate}
+		)
+	</insert>
+	
+	<delete id="deleteContact" parameterType="Contact">
+		delete from contact where id = #{id}
+	</delete>
 
 </mapper>
